@@ -9,29 +9,65 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A; /* Preto profundo */
-            color: #E5E7EB; /* Tailwind gray-200 - Texto principal claro */
+            background-color: #0A0A0A; /* Preto profundo consistente */
+            color: #E5E7EB; /* Tailwind gray-200 */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Fundos de Seção e Efeitos */
-        .hero-section-bg {
-            background-image: radial-gradient(ellipse 50% 80% at 50% -20%, rgba(99, 102, 241, 0.15), rgba(15, 23, 42, 0)), 
-                              linear-gradient(180deg, #0D0D0D 0%, #0A0A0A 100%);
-        }
-        .cta-final-bg {
-            background-image: radial-gradient(ellipse 50% 80% at 50% 120%, rgba(99, 102, 241, 0.1), rgba(15, 23, 42, 0)), 
-                              linear-gradient(180deg, #0A0A0A 0%, #0D0D0D 100%);
-        }
-        .section-bg-dark {
-            background-color: #0A0A0A;
-        }
-        .section-bg-dark-alt {
-            background-color: #111111; /* Cinza muito escuro para alternância sutil */
+        /* Efeito de brilho sutil para seções (como no Framer/Vercel) */
+        .section-glow-purple::before {
+            content: '';
+            position: absolute;
+            top: -10%; /* Ajustar conforme necessário */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* Largura do brilho */
+            height: 300px; /* Altura do brilho */
+            background-image: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%); /* Roxo sutil */
+            z-index: -1; /* Atrás do conteúdo da seção */
+            pointer-events: none;
         }
 
-        /* Botão Primário (Consultoria) - Estilo Vercel/Framer */
+        .hero-section-bg {
+            position: relative; /* Para o pseudo-elemento de brilho */
+            background-color: #0A0A0A; /* Mantém o fundo escuro, brilho adicionado via ::before */
+        }
+         .hero-section-bg::before { /* Brilho específico para o herói */
+            content: '';
+            position: absolute;
+            top: -20%; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%; 
+            max-width: 1200px;
+            height: 500px; 
+            background-image: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            z-index: 0; 
+            pointer-events: none;
+        }
+
+
+        .cta-final-bg {
+            position: relative;
+            background-color: #0A0A0A;
+        }
+         .cta-final-bg::before { /* Brilho para o CTA final */
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            background-image: radial-gradient(ellipse at center, rgba(76, 29, 149, 0.18) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+
+        /* Botão Primário (Consultoria) */
         .btn-primary-refined {
             background-image: linear-gradient(to right, #6D28D9, #4F46E5);
             color: white;
@@ -73,7 +109,7 @@
             transform: translateY(0px);
         }
 
-        /* Botão do Header */
+        /* Botão do Header - Link de texto */
         .btn-header-subtle {
             color: #A78BFA;
             font-weight: 500;
@@ -85,11 +121,29 @@
 
         /* Cards */
         .card-refined-bg {
-            background-color: #18181B;
-            border: 1px solid rgba(55, 65, 81, 0.6);
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            background-color: #18181B; /* Tailwind zinc-900 */
+            border: 1px solid rgba(55, 65, 81, 0.3); /* Tailwind gray-700 com opacidade reduzida */
+            border-radius: 16px; /* Mais arredondado */
+            box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.03) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 20px 40px -10px rgba(124, 58, 237, 0.1); /* Sombra sutil e brilho roxo */
+            position: relative; /* Para o brilho interno */
+            overflow: hidden; /* Para o brilho interno não vazar */
         }
+        .card-refined-bg::before { /* Brilho interno sutil para cards */
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle, rgba(167, 139, 250, 0.05) 0%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .card-refined-bg:hover::before {
+            opacity: 1;
+        }
+
 
         /* Gradiente para Texto do Herói */
         .text-hero-gradient {
@@ -105,35 +159,53 @@
         ::-webkit-scrollbar-thumb { background: #2A0A4A; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #3B0764; }
 
-        /* Classes para Animação de Entrada (Scroll Reveal) */
+        /* Animação de Entrada (Scroll Reveal) */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition-property: opacity, transform;
-            transition-duration: 0.7s; /* Duração da animação */
-            transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Easing com um leve "bounce" */
+            transition-duration: 0.7s;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .revealed {
             opacity: 1;
             transform: translateY(0);
         }
+        .section-content { /* Adicionado para garantir que o conteúdo da seção fique acima do brilho */
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="bg-black/70 backdrop-blur-lg shadow-md sticky top-0 z-50 border-b border-gray-800/70">
+    <header class="bg-black/60 backdrop-blur-xl shadow-lg sticky top-0 z-50 border-b border-gray-800/50">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl sm:text-2xl font-bold text-white hover:text-purple-400 transition-colors">Mateus Barros</a>
-            <nav class="space-x-3 sm:space-x-4 md:space-x-5">
+            
+            <nav class="hidden md:flex space-x-3 sm:space-x-4 md:space-x-5 items-center">
                 <a href="#consultoria" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors font-medium">Consultoria de IA</a>
                 <a href="#sobre" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors">Sobre Mim</a>
                 <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" class="btn-header-subtle text-sm sm:text-base px-2 py-1 md:px-3">Guia Gratuito</a>
             </nav>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-black/90 backdrop-blur-md border-t border-gray-700/50">
+            <a href="#consultoria" class="block text-gray-200 hover:bg-gray-700/50 px-4 py-3 text-base font-medium">Consultoria de IA</a>
+            <a href="#sobre" class="block text-gray-200 hover:bg-gray-700/50 px-4 py-3 text-base">Sobre Mim</a>
+            <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" class="block text-purple-400 hover:bg-gray-700/50 px-4 py-3 text-base">Guia Gratuito</a>
         </div>
     </header>
 
-    <section class="hero-section-bg text-white py-28 md:py-48">
-        <div class="container mx-auto px-6 text-center">
+    <section class="hero-section-bg text-white py-28 md:py-48 overflow-hidden"> <div class="container mx-auto px-6 text-center section-content">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-hero-gradient leading-tight reveal-on-scroll">
                 A Inteligência Artificial Já Chegou.
             </h1>
@@ -152,8 +224,8 @@
         </div>
     </section>
 
-    <section id="desafios" class="py-20 md:py-32 section-bg-dark-alt">
-        <div class="container mx-auto px-6">
+    <section id="desafios" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
+        <div class="container mx-auto px-6 section-content">
             <div class="text-center mb-16 md:mb-20 reveal-on-scroll">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white">A IA Promete Muito,</h2>
                 <p class="text-xl md:text-2xl text-purple-400 mt-2">mas a prática parece um labirinto?</p>
@@ -179,7 +251,7 @@
     </section>
 
     <section id="sobre" class="py-20 md:py-32 section-bg-dark reveal-on-scroll">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6 section-content">
             <div class="md:flex md:items-center md:space-x-16">
                 <div class="md:w-2/5 mb-10 md:mb-0 text-center md:text-left reveal-on-scroll" style="transition-delay: 0.2s;">
                     <img src="https://placehold.co/400x400/111111/A78BFA?text=Mateus+Barros" alt="Mateus Barros" class="rounded-lg shadow-2xl mx-auto md:mx-0 w-64 h-64 sm:w-72 sm:h-72 md:w-full md:h-auto max-w-md object-cover border-2 border-purple-600/30">
@@ -198,8 +270,8 @@
         </div>
     </section>
 
-    <section id="consultoria" class="py-20 md:py-32 section-bg-dark-alt reveal-on-scroll">
-        <div class="container mx-auto px-6 text-center">
+    <section id="consultoria" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
+        <div class="container mx-auto px-6 text-center section-content">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white leading-tight reveal-on-scroll">Chega de Tentativa e Erro.</h2>
             <p class="text-xl md:text-2xl text-purple-400 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Descubra a Consultoria de IA Desenhada Para o Seu Sucesso Estratégico.</p>
             <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-16 leading-relaxed reveal-on-scroll" style="transition-delay: 0.4s;">
@@ -230,7 +302,7 @@
     </section>
 
     <section id="guia-final" class="py-20 md:py-32 section-bg-dark reveal-on-scroll">
-        <div class="container mx-auto px-6 text-center">
+        <div class="container mx-auto px-6 text-center section-content">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight reveal-on-scroll">Quer Dar o Primeiro Passo (ou Aprofundar seu Conhecimento)?</h2>
             <p class="text-xl md:text-2xl text-purple-400 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Enquanto você considera a consultoria, preparei um presente para sua jornada.</p>
             <div class="md:flex md:items-center md:space-x-12 bg-slate-900/50 p-8 md:p-12 rounded-2xl border border-gray-700/60 max-w-4xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
@@ -256,8 +328,8 @@
         </div>
     </section>
 
-    <section class="cta-final-bg text-white py-28 md:py-40">
-        <div class="container mx-auto px-6 text-center">
+    <section class="cta-final-bg text-white py-28 md:py-40 overflow-hidden">
+        <div class="container mx-auto px-6 text-center section-content">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-hero-gradient leading-tight reveal-on-scroll">Pronto Para Dar o Salto Quântico com IA?</h2>
             <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed reveal-on-scroll" style="transition-delay: 0.2s;">
                 A transformação do seu negócio começa com uma conversa. Vamos explorar juntos como a Inteligência Artificial pode ser sua maior aliada estratégica.
@@ -279,25 +351,38 @@
     </footer>
 
     <script>
+        // Script para Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Mudar ícone do botão (opcional)
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuButton.innerHTML = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>`;
+            } else {
+                mobileMenuButton.innerHTML = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+            }
+        });
+
+        // Fechar menu ao clicar em um link (para SPAs de uma página)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.innerHTML = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>`;
+            });
+        });
+
         // Script para animação de entrada (Scroll Reveal)
         const revealOnScrollElements = document.querySelectorAll('.reveal-on-scroll');
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    // Opcional: parar de observar depois que o elemento foi revelado
-                    // observer.unobserve(entry.target); 
                 }
-                // Opcional: remover a classe se o elemento sair da tela (para re-animar)
-                // else {
-                //     entry.target.classList.remove('revealed');
-                // }
             });
-        }, {
-            threshold: 0.1, // Revelar quando 10% do elemento estiver visível
-            // rootMargin: '0px 0px -50px 0px' // Ajustar margem para revelar um pouco antes/depois
-        });
+        }, { threshold: 0.1 });
 
         revealOnScrollElements.forEach(el => {
             revealObserver.observe(el);
