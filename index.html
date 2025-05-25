@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateus Barros - Transforme Seu Negócio com Inteligência Artificial</title>
+    <title>Gama In. por Mateus Barros - Transforme Seu Negócio com IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A; /* Preto profundo consistente */
-            color: #E5E7EB; /* Tailwind gray-200 */
+            background-color: #0A0A0A; 
+            color: #E5E7EB; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Efeito de brilho sutil para seções (como no Framer/Vercel) */
         .section-glow-purple::before {
             content: '';
             position: absolute;
-            top: -10%; /* Ajustar conforme necessário */
+            top: -10%; 
             left: 50%;
             transform: translateX(-50%);
-            width: 80%; /* Largura do brilho */
-            height: 300px; /* Altura do brilho */
-            background-image: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%); /* Roxo sutil */
-            z-index: -1; /* Atrás do conteúdo da seção */
+            width: 80%; 
+            height: 300px; 
+            background-image: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%); 
+            z-index: -1; 
             pointer-events: none;
         }
 
         .hero-section-bg {
-            position: relative; /* Para o pseudo-elemento de brilho */
-            background-color: #0A0A0A; /* Mantém o fundo escuro, brilho adicionado via ::before */
+            position: relative; 
+            background-color: #0A0A0A; 
         }
-         .hero-section-bg::before { /* Brilho específico para o herói */
+         .hero-section-bg::before { 
             content: '';
             position: absolute;
             top: -20%; 
@@ -47,12 +46,11 @@
             pointer-events: none;
         }
 
-
         .cta-final-bg {
             position: relative;
             background-color: #0A0A0A;
         }
-         .cta-final-bg::before { /* Brilho para o CTA final */
+         .cta-final-bg::before { 
             content: '';
             position: absolute;
             bottom: -20%;
@@ -66,8 +64,13 @@
             pointer-events: none;
         }
 
+        .section-bg-dark-alt {
+            background-color: #111111; 
+        }
+        .section-bg-darker {
+            background-color: #0A0A0A;
+        }
 
-        /* Botão Primário (Consultoria) */
         .btn-primary-refined {
             background-image: linear-gradient(to right, #6D28D9, #4F46E5);
             color: white;
@@ -88,7 +91,6 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
         }
 
-        /* Botão Secundário (Guia Gratuito) */
         .btn-secondary-refined {
             background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -109,7 +111,6 @@
             transform: translateY(0px);
         }
 
-        /* Botão do Header - Link de texto */
         .btn-header-subtle {
             color: #A78BFA;
             font-weight: 500;
@@ -119,16 +120,15 @@
             color: #C4B5FD;
         }
 
-        /* Cards */
         .card-refined-bg {
-            background-color: #18181B; /* Tailwind zinc-900 */
-            border: 1px solid rgba(55, 65, 81, 0.3); /* Tailwind gray-700 com opacidade reduzida */
-            border-radius: 16px; /* Mais arredondado */
-            box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.03) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 20px 40px -10px rgba(124, 58, 237, 0.1); /* Sombra sutil e brilho roxo */
-            position: relative; /* Para o brilho interno */
-            overflow: hidden; /* Para o brilho interno não vazar */
+            background-color: #18181B; 
+            border: 1px solid rgba(55, 65, 81, 0.3); 
+            border-radius: 16px; 
+            box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.03) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 20px 40px -10px rgba(124, 58, 237, 0.1); 
+            position: relative; 
+            overflow: hidden; 
         }
-        .card-refined-bg::before { /* Brilho interno sutil para cards */
+        .card-refined-bg::before { 
             content: '';
             position: absolute;
             top: -50%;
@@ -144,8 +144,6 @@
             opacity: 1;
         }
 
-
-        /* Gradiente para Texto do Herói */
         .text-hero-gradient {
             background-image: linear-gradient(to right, #A78BFA, #EC4899, #FBCFE8);
             -webkit-background-clip: text;
@@ -159,7 +157,6 @@
         ::-webkit-scrollbar-thumb { background: #2A0A4A; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #3B0764; }
 
-        /* Animação de Entrada (Scroll Reveal) */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -171,9 +168,31 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .section-content { /* Adicionado para garantir que o conteúdo da seção fique acima do brilho */
+        .section-content { 
             position: relative;
             z-index: 1;
+        }
+
+        .animated-gradient-text {
+            background-image: linear-gradient(90deg, #A78BFA, #EC4899, #FBCFE8, #A78BFA); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-animation 4s linear infinite; 
+            display: inline-block; 
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+         /* Adicionado para garantir que a imagem do guia mantenha a proporção e não estique demais */
+        .guide-image-container img {
+            max-height: 350px; /* Altura máxima da imagem do guia */
+            width: auto; /* Largura automática para manter proporção */
+            object-fit: contain; /* Garante que a imagem caiba sem cortar, mas pode deixar espaços */
         }
     </style>
 </head>
@@ -181,7 +200,10 @@
 
     <header class="bg-black/60 backdrop-blur-xl shadow-lg sticky top-0 z-50 border-b border-gray-800/50">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl sm:text-2xl font-bold text-white hover:text-purple-400 transition-colors">Mateus Barros</a>
+            <a href="#" class="text-xl sm:text-2xl font-extrabold">
+                <span class="animated-gradient-text">Gama In.</span>
+                <span class="text-sm font-medium text-gray-400">por Mateus Barros</span>
+            </a>
             
             <nav class="hidden md:flex space-x-3 sm:space-x-4 md:space-x-5 items-center">
                 <a href="#consultoria" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors font-medium">Consultoria de IA</a>
@@ -191,9 +213,7 @@
 
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </div>
@@ -205,7 +225,8 @@
         </div>
     </header>
 
-    <section class="hero-section-bg text-white py-28 md:py-48 overflow-hidden"> <div class="container mx-auto px-6 text-center section-content">
+    <section class="hero-section-bg text-white py-28 md:py-48 overflow-hidden"> 
+        <div class="container mx-auto px-6 text-center section-content">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-hero-gradient leading-tight reveal-on-scroll">
                 A Inteligência Artificial Já Chegou.
             </h1>
@@ -306,8 +327,7 @@
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight reveal-on-scroll">Quer Dar o Primeiro Passo (ou Aprofundar seu Conhecimento)?</h2>
             <p class="text-xl md:text-2xl text-purple-400 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Enquanto você considera a consultoria, preparei um presente para sua jornada.</p>
             <div class="md:flex md:items-center md:space-x-12 bg-slate-900/50 p-8 md:p-12 rounded-2xl border border-gray-700/60 max-w-4xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
-                <div class="md:w-2/5 mb-8 md:mb-0">
-                    <img src="https://placehold.co/500x350/111111/7C3AED?text=Guia+Prático+IA" alt="Guia Prático de IA" class="rounded-lg shadow-xl mx-auto">
+                <div class="md:w-2/5 mb-8 md:mb-0 guide-image-container flex justify-center items-center"> <img src="https://i.pinimg.com/736x/e9/30/2a/e9302ab14a40ef3bd71508ab4a39bf5a.jpg" alt="Guia Prático de IA - Capa com elementos futuristas e cérebro digital" class="rounded-lg shadow-xl mx-auto">
                 </div>
                 <div class="md:w-3/5 text-left">
                     <h3 class="text-2xl md:text-3xl font-semibold text-white mb-5">Acesse o Guia Prático de Inteligência Artificial</h3>
@@ -345,7 +365,7 @@
 
     <footer class="bg-black text-gray-400 py-12 text-center border-t border-gray-800/70">
         <div class="container mx-auto px-6">
-            <p>&copy; <span id="currentYear"></span> Mateus Barros. Todos os direitos reservados.</p>
+            <p>&copy; <span id="currentYear"></span> Gama In. por Mateus Barros. Todos os direitos reservados.</p>
             <p class="text-sm mt-2">Potencializando negócios com Inteligência Artificial Estratégica.</p>
         </div>
     </footer>
@@ -358,15 +378,12 @@
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Mudar ícone do botão (opcional)
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenuButton.innerHTML = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>`;
             } else {
                 mobileMenuButton.innerHTML = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
             }
         });
-
-        // Fechar menu ao clicar em um link (para SPAs de uma página)
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
