@@ -3,364 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Consultoria - Desbloqueie o Potencial da Inteligência Artificial</title>
+    <title>Mateus Barros - Inteligência Artificial para Negócios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', 'Inter', sans-serif; /* Poppins for body, Inter as fallback */
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif; /* Montserrat for headings */
+            font-family: 'DM Sans', sans-serif;
+            background-color: #0F172A; /* Tailwind slate-900 - Fundo principal escuro */
+            color: #E2E8F0; /* Tailwind slate-200 */
         }
 
-        /* Custom gradient for main CTA button */
-        .btn-custom-gradient {
-            background: linear-gradient(45deg, #6833DC, #D418C5, #FF631F, #FFB92E);
-            background-size: 400% 200%;
-            transition: all 0.8s ease;
-            animation: brilho 3.4s infinite;
+        /* Gradientes de Fundo para Seções */
+        .hero-section-bg {
+            background-image: linear-gradient(135deg, #3B0764 0%, #1E293B 50%, #4C1D95 100%); /* Roxo profundo -> Slate-800 -> Roxo mais vibrante */
         }
-        .btn-custom-gradient:hover {
-            background-position: 100% 0;
+        .cta-final-bg {
+             background-image: linear-gradient(135deg, #4C1D95 0%, #3B0764 50%,  #1E293B 100%); /* Similar ao hero, mas invertido ou com variação */
+        }
+        .section-bg-slate-gradient {
+            background-image: linear-gradient(to bottom, #1E293B, #0F172A); /* Slate-800 para Slate-900 */
+        }
+         .section-bg-slate-gradient-alt {
+            background-image: linear-gradient(to bottom, #0F172A, #1E293B); /* Slate-900 para Slate-800 */
+        }
+
+
+        /* Estilo de Botão Primário (CTAs principais) */
+        .btn-primary-gradient {
+            background-image: linear-gradient(to right, #8B5CF6, #7C3AED, #6D28D9); /* Gradiente Roxo */
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-primary-gradient:hover {
+            background-image: linear-gradient(to right, #7C3AED, #6D28D9, #5B21B6);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4), inset 0 1px 1px rgba(255,255,255,0.05);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 99, 31, 0.4); /* Adjusted shadow color */
+        }
+        .btn-primary-gradient:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(0,0,0,0.1);
         }
 
-        @keyframes brilho {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Estilo de Botão Secundário (Consultoria) */
+        .btn-secondary-gradient {
+            background-image: linear-gradient(to right, #10B981, #059669); /* Gradiente Verde/Teal */
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2), inset 0 1px 1px rgba(255,255,255,0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-secondary-gradient:hover {
+            background-image: linear-gradient(to right, #059669, #047857);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3), inset 0 1px 1px rgba(255,255,255,0.05);
+            transform: translateY(-2px);
+        }
+         .btn-secondary-gradient:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.2), inset 0 1px 1px rgba(0,0,0,0.1);
         }
 
-        /* Subtle shadow for cards */
-        .card-shadow {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+        /* Estilo "Apple" para botão do header */
+        .btn-header-action {
+            background-color: rgba(124, 58, 237, 0.8); /* Roxo semi-transparente */
+            border: 1px solid rgba(167, 139, 250, 0.5); /* Borda roxa mais clara */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0px rgba(255,255,255,0.1);
+            transition: all 0.2s ease-in-out;
         }
-        /* Modal backdrop */
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.6);
+        .btn-header-action:hover {
+            background-color: rgba(109, 40, 217, 0.9); /* Roxo mais escuro no hover */
+            border-color: rgba(196, 181, 253, 0.7);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0px rgba(255,255,255,0.05);
         }
 
-        /* Custom check/cross styling */
-        .icon-box {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.25rem;
+        /* Cards com Gradiente e Efeito de Vidro */
+        .card-gradient-bg {
+            background-image: linear-gradient(145deg, rgba(30, 41, 59, 0.85) 0%, rgba(51, 65, 85, 0.7) 100%); /* Slate-800 para Slate-700 com opacidade */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); /* Para Safari */
+            border: 1px solid rgba(71, 85, 105, 0.4); /* Borda Slate-600 mais sutil */
         }
-        .icon-box.red {
-            background-color: #fee2e2; /* Red-100 */
-            color: #ef4444; /* Red-500 */
+
+        /* Gradiente para Texto do Herói */
+        .text-hero-gradient {
+            background-image: linear-gradient(to right, #C4B5FD, #F472B6, #F9A8D4); /* Roxo claro -> Rosa -> Rosa bem claro */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .icon-box.green {
-            background-color: #d1fae5; /* Green-100 */
-            color: #10b981; /* Green-500 */
+
+        html {
+            scroll-behavior: smooth;
         }
+
+        /* Scrollbar customizada (opcional, visual) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1E293B; } /* slate-800 */
+        ::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 4px; } /* purple-600 */
+        ::-webkit-scrollbar-thumb:hover { background: #6D28D9; } /* purple-700 */
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
+<body class="antialiased">
 
-    <header class="py-6 px-4 md:px-8 lg:px-16 flex justify-between items-center bg-white shadow-sm rounded-b-xl">
-        <div class="text-2xl font-bold text-gray-900">
-            <span class="text-blue-600">IA</span>Consultoria
+    <header class="bg-slate-800/70 backdrop-blur-lg shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl sm:text-2xl font-bold text-white hover:text-purple-400 transition-colors">Mateus Barros</a>
+            <nav class="space-x-1 sm:space-x-2 md:space-x-4">
+                <a href="#guia" class="text-slate-300 hover:text-purple-300 px-2 py-1 md:px-3 md:py-2 rounded-md text-sm sm:text-base transition-colors">Guia Gratuito</a>
+                <a href="#sobre" class="text-slate-300 hover:text-purple-300 px-2 py-1 md:px-3 md:py-2 rounded-md text-sm sm:text-base transition-colors">Sobre Mim</a>
+                <a href="#consultoria" class="text-slate-300 hover:text-purple-300 px-2 py-1 md:px-3 md:py-2 rounded-md text-sm sm:text-base transition-colors">Consultoria</a>
+                <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" class="btn-header-action text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-sm sm:text-base font-medium">Acessar Guia</a>
+            </nav>
         </div>
-        <nav>
-            <ul class="flex space-x-6">
-                <li><a href="#hero" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">Início</a></li>
-                <li><a href="#problems-solutions" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">Benefícios</a></li>
-                <li><a href="#ebook" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">E-book</a></li>
-                <li><a href="#consultoria" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">Consultoria</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="hero" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-90"></div>
-        <img
-          src="https://placehold.co/1920x1080/E0F2F7/007AFF?text=Inteligencia+Artificial"
-          alt="Inteligência Artificial"
-          class="absolute inset-0 w-full h-full object-cover opacity-10"
-          onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/E0F2F7/007AFF?text=IA';"
-        />
-        <div class="relative z-10 max-w-4xl mx-auto p-6 bg-white bg-opacity-80 rounded-2xl shadow-lg backdrop-blur-sm">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                Desbloqueie o Potencial da <span class="text-blue-600">Inteligência Artificial</span>
+    <section class="hero-section-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-hero-gradient">
+                Desbloqueie o Poder da IA no Seu Negócio
             </h1>
-            <p class="text-lg sm:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
-                Transforme seu negócio com soluções de IA inovadoras e estratégias personalizadas.
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto">
+                Seu Guia Prático para Ferramentas e Estratégias de Inteligência Artificial que Geram Resultados Reais, mesmo que você esteja começando.
             </p>
-            <button
-                id="openEbookModalBtn"
-                class="btn-custom-gradient text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
-            >
-                Baixe Nosso E-book Grátis
-            </button>
-        </div>
+            <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" 
+               class="btn-primary-gradient text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-xl text-lg sm:text-xl inline-block">
+                QUERO ACESSAR O GUIA GRATUITO AGORA!
+            </a>
+            <p class="mt-6 text-sm text-slate-400">Acesso imediato ao guia.</p> </div>
     </section>
 
-    <section id="problems-solutions" class="py-20 px-4 md:px-8 lg:px-16 bg-gray-100">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left">
-            <div class="bg-white p-8 rounded-2xl card-shadow">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-                    Se você não aguenta mais…
-                </h2>
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box red flex-shrink-0">❌</div>
-                        <p class="text-lg text-gray-700">Não conseguir otimizar processos com eficiência.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box red flex-shrink-0">❌</div>
-                        <p class="text-lg text-gray-700">Ficar para trás na inovação tecnológica.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box red flex-shrink-0">❌</div>
-                        <p class="text-lg text-gray-700">Perder oportunidades de crescimento por falta de dados.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box red flex-shrink-0">❌</div>
-                        <p class="text-lg text-gray-700">Não ter uma estratégia clara para o futuro da sua empresa.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl card-shadow">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-                    Com nossa consultoria, você será capaz de...
-                </h2>
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box green flex-shrink-0">✅</div>
-                        <p class="text-lg text-gray-700">Otimizar processos e reduzir custos com IA.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box green flex-shrink-0">✅</div>
-                        <p class="text-lg text-gray-700">Inovar e criar novos produtos/serviços com IA.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box green flex-shrink-0">✅</div>
-                        <p class="text-lg text-gray-700">Tomar decisões estratégicas baseadas em dados.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="icon-box green flex-shrink-0">✅</div>
-                        <p class="text-lg text-gray-700">Ter um plano de IA claro e eficaz para o seu negócio.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-16 text-center">
-            <button
-              onclick="document.getElementById('consultoria').scrollIntoView({ behavior: 'smooth' })"
-              class="btn-custom-gradient text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
-            >
-              Quero Transformar Meu Negócio com IA
-            </button>
-          </div>
-    </section>
-
-    <section id="ebook" class="py-20 px-4 md:px-8 lg:px-16 bg-white">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">
-                Seu Guia Essencial para <span class="text-blue-600">IA</span>
+    <section id="identifica" class="py-16 md:py-24 section-bg-slate-gradient-alt">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+                A IA parece complexa ou você não sabe como extrair o máximo dela?
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-gray-50 p-8 rounded-2xl card-shadow flex flex-col items-center">
-                    <div class="text-blue-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002 12c0 2.757 1.122 5.234 2.938 7.078A11.999 11.999 0 0012 22c2.928 0 5.607-1.192 7.562-3.155A11.999 11.999 0 0022 12c0-2.757-1.122-5.234-2.938-7.078z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Conceitos Fundamentais</h3>
-                    <p class="text-gray-600 leading-relaxed text-center">
-                        Entenda o que é IA, seus tipos e como ela está moldando o futuro.
-                    </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-gradient-bg p-6 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <svg class="w-12 h-12 text-purple-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.79 4 4s-1.79 4-4 4c-1.742 0-3.223-.835-3.772-2M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Perdido entre tantas ferramentas?</h3>
+                    <p class="text-slate-300">Já ouviu falar de várias ferramentas de IA, mas se sente confuso sobre qual usar para *seus* desafios específicos?</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-2xl card-shadow flex flex-col items-center">
-                    <div class="text-blue-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Aplicações Práticas</h3>
-                    <p class="text-gray-600 leading-relaxed text-center">
-                        Descubra exemplos reais de IA em diversos setores e como aplicá-la.
-                    </p>
+                <div class="card-gradient-bg p-6 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <svg class="w-12 h-12 text-purple-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.975 11H9.025a1 1 0 00-.951.69l-1.5 4.5A1 1 0 007.525 18h8.95a1 1 0 00.951-1.81l-1.5-4.5A1 1 0 0014.975 11z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Uso superficial da IA?</h3>
+                    <p class="text-slate-300">Utiliza algumas ferramentas, mas sente que seu uso ainda é "amador" e não explora todo o potencial?</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-2xl card-shadow flex flex-col items-center">
-                    <div class="text-blue-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Estratégias de Implementação</h3>
-                    <p class="text-gray-600 leading-relaxed text-center">
-                        Passos claros para integrar a IA em sua empresa e obter resultados.
-                    </p>
+                <div class="card-gradient-bg p-6 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <svg class="w-12 h-12 text-purple-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Dificuldade em combinar soluções?</h3>
+                    <p class="text-slate-300">Não consegue enxergar como integrar diferentes IAs para um impacto real na produtividade e resultados?</p>
                 </div>
             </div>
-            <div class="mt-16">
-                <button
-                    id="downloadEbookBtn"
-                    class="btn-custom-gradient text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
-                >
-                    Baixe o E-book Agora
-                </button>
+            <p class="text-center mt-12 text-lg text-slate-400">Se você respondeu SIM, este guia foi feito para você.</p>
+        </div>
+    </section>
+
+    <section id="guia" class="py-16 md:py-24 section-bg-slate-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">Seu Ponto de Partida para Dominar a IA na Prática</h2>
+            <div class="md:flex md:items-center md:space-x-12">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="https://placehold.co/600x400/7C3AED/1E293B?text=Mockup+Guia+IA" alt="Mockup do Guia de IA" class="rounded-xl shadow-2xl mx-auto border-4 border-slate-700">
+                </div>
+                <div class="md:w-1/2">
+                    <ul class="space-y-4 text-lg text-slate-300 mb-8">
+                        <li class="flex items-start"><span class="text-purple-400 font-bold mr-3 text-xl">✔</span> Panorama claro das principais ferramentas e suas aplicações.</li>
+                        <li class="flex items-start"><span class="text-purple-400 font-bold mr-3 text-xl">✔</span> Melhores práticas para IA focada em produtividade e resultados.</li>
+                        <li class="flex items-start"><span class="text-purple-400 font-bold mr-3 text-xl">✔</span> Linguagem simples e direta, sem jargões técnicos desnecessários.</li>
+                        <li class="flex items-start"><span class="text-purple-400 font-bold mr-3 text-xl">✔</span> Insights para combinar ferramentas e elevar seu nível de uso da IA.</li>
+                        <li class="flex items-start"><span class="text-purple-400 font-bold mr-3 text-xl">✔</span> Conteúdo para transformar seu conhecimento em ações concretas.</li>
+                    </ul>
+                    <p class="text-slate-400 mb-10 text-lg">Este não é apenas um compilado de links. É um material pensado para ser seu companheiro de jornada na IA.</p>
+                    <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank"
+                       class="btn-primary-gradient text-white font-bold py-3 px-8 rounded-xl text-lg inline-block">
+                        PEGAR MEU GUIA GRATUITO!
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="consultoria" class="py-20 px-4 md:px-8 lg:px-16 bg-gray-100">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Pronto para Levar Sua Empresa ao Próximo Nível com <span class="text-blue-600">IA</span>?
-            </h2>
-            <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-                Nossa consultoria especializada em Inteligência Artificial oferece soluções personalizadas para otimizar processos, criar novos produtos e impulsionar seu crescimento.
+    <section id="sobre" class="py-16 md:py-24 section-bg-slate-gradient-alt">
+        <div class="container mx-auto px-6">
+            <div class="md:flex md:items-center md:space-x-12">
+                <div class="md:w-1/3 mb-10 md:mb-0 text-center">
+                     <img src="https://placehold.co/300x300/334155/C4B5FD?text=Mateus" alt="Mateus Barros" class="rounded-full shadow-xl mx-auto w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-purple-500/70">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Olá, sou Mateus Barros,</h2>
+                    <p class="text-xl text-purple-400 font-semibold mb-6">e minha missão é te ajudar a usar a IA de forma inteligente e estratégica.</p>
+                    <p class="text-slate-300 text-lg mb-4">
+                        Trabalho 100% com Inteligência Artificial, desde a concepção de projetos até a automação completa de processos (utilizando ferramentas como n8n). Já ajudei empresas e profissionais a reduzirem tempo ocioso, otimizarem tarefas e inovarem em seus serviços através de consultorias e implementações práticas.
+                    </p>
+                    <p class="text-slate-300 text-lg mb-4">
+                        Acredito que a IA é uma ferramenta poderosa de transformação, e meu objetivo é descomplicar seu acesso a ela, mostrando como aplicar no dia a dia para gerar aumento de produtividade, redução de custos e inovação.
+                    </p>
+                    <p class="text-slate-300 text-lg">
+                        Este guia é uma amostra do conhecimento e da abordagem prática que posso compartilhar com você.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="consultoria" class="py-16 md:py-24 section-bg-slate-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">O Guia é o Começo. A Consultoria é a Aceleração.</h2>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-12">
+                Depois de explorar o guia, você pode sentir a necessidade de um suporte mais próximo para aplicar esses conceitos diretamente aos desafios e processos específicos da sua empresa ou carreira. Minha consultoria é desenhada para isso.
             </p>
-            <div class="bg-white p-8 rounded-2xl card-shadow max-w-2xl mx-auto">
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">Fale Conosco</h3>
-                <form id="consultingForm" class="space-y-6">
-                    <div>
-                        <label for="consultingName" class="sr-only">Nome</label>
-                        <input
-                            type="text"
-                            id="consultingName"
-                            name="consultingName"
-                            placeholder="Seu Nome"
-                            required
-                            class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                        />
-                    </div>
-                    <div>
-                        <label for="consultingEmail" class="sr-only">Email</label>
-                        <input
-                            type="email"
-                            id="consultingEmail"
-                            name="consultingEmail"
-                            placeholder="Seu Melhor E-mail"
-                            required
-                            class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                        />
-                    </div>
-                    <div>
-                        <label for="consultingMessage" class="sr-only">Mensagem</label>
-                        <textarea
-                            id="consultingMessage"
-                            name="consultingMessage"
-                            rows="4"
-                            placeholder="Conte-nos sobre seu projeto ou dúvida..."
-                            required
-                            class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-y"
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        class="btn-custom-gradient w-full text-white font-semibold py-3 px-8 rounded-xl text-lg shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
-                    >
-                        Solicitar Consultoria
-                    </button>
-                </form>
+            <div class="grid md:grid-cols-3 gap-8 text-left mb-12">
+                <div class="card-gradient-bg p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Treinamento Personalizado</h3>
+                    <p class="text-slate-300">Capacitação para você e/ou sua equipe usarem as melhores ferramentas de IA com autonomia e foco nos seus objetivos.</p>
+                </div>
+                <div class="card-gradient-bg p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Estratégias de IA Sob Medida</h3>
+                    <p class="text-slate-300">Analisamos seus processos e identificamos onde a IA pode gerar o maior impacto, criando um plano de ação claro.</p>
+                </div>
+                <div class="card-gradient-bg p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Implementação Inteligente</h3>
+                    <p class="text-slate-300">Foco em ensinar você "a pescar", garantindo que as soluções de IA sejam sustentáveis e escaláveis no seu contexto.</p>
+                </div>
             </div>
+            <p class="text-lg text-slate-300 mb-6">
+                Interessado em um acompanhamento individualizado para potencializar seus resultados com IA?
+            </p>
+            <a href="https://iamateusbarros.notion.site/1feeab9d09e1808db902eb76d4a30725?pvs=105" target="_blank"
+               class="btn-secondary-gradient text-white font-bold py-3 px-8 rounded-xl text-lg inline-block">
+                QUERO SABER MAIS SOBRE A CONSULTORIA
+            </a>
         </div>
     </section>
 
-    <footer class="py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-white text-center rounded-t-xl">
-        <p>&copy; 2025 IAConsultoria. Todos os direitos reservados.</p>
+    <section class="cta-final-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Não Deixe Sua Empresa Ficar Para Trás na Revolução da IA!</h2>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto">
+                O futuro é inteligente, e você pode começar a construí-lo hoje. Acesse o guia gratuito, dê o primeiro passo para entender e aplicar a IA de forma estratégica e veja a transformação acontecer.
+            </p>
+            <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank"
+               class="btn-primary-gradient text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-xl text-lg sm:text-xl inline-block">
+                QUERO MEU GUIA E COMEÇAR AGORA!
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center border-t border-slate-700/50">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Mateus Barros. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1">Potencializando negócios com Inteligência Artificial.</p>
+        </div>
     </footer>
 
-    <div id="ebookModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
-            <button
-                id="closeEbookModalBtn"
-                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-3xl leading-none"
-                aria-label="Fechar"
-            >
-                &times;
-            </button>
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Baixe Seu E-book Grátis</h2>
-            <p class="text-gray-700 mb-6 text-center">
-                Preencha seus dados para receber o e-book "Guia Essencial para IA" diretamente no seu e-mail.
-            </p>
-            <form id="ebookForm" class="space-y-4">
-                <div>
-                    <label for="name" class="sr-only">Nome</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Seu Nome Completo"
-                        required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    />
-                </div>
-                <div>
-                    <label for="email" class="sr-only">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Seu Melhor E-mail"
-                        required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    />
-                </div>
-                <button
-                    type="submit"
-                    class="btn-custom-gradient w-full text-white font-semibold py-2.5 px-6 rounded-lg text-lg shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
-                >
-                    Receber E-book
-                </button>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // E-book Modal Logic
-        const ebookModal = document.getElementById('ebookModal');
-        const openEbookModalBtn = document.getElementById('openEbookModalBtn');
-        const downloadEbookBtn = document.getElementById('downloadEbookBtn');
-        const closeEbookModalBtn = document.getElementById('closeEbookModalBtn');
-        const ebookForm = document.getElementById('ebookForm');
-
-        function openModal() {
-            ebookModal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            ebookModal.classList.add('hidden');
-        }
-
-        openEbookModalBtn.addEventListener('click', openModal);
-        downloadEbookBtn.addEventListener('click', openModal);
-        closeEbookModalBtn.addEventListener('click', closeModal);
-
-        ebookForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = e.target.name.value;
-            const email = e.target.email.value;
-            console.log('E-book Lead Captured:', { name, email });
-            alert('Obrigado! Seu e-book foi enviado para o seu e-mail.');
-            closeModal();
-            e.target.reset(); // Clear the form after submission
-        });
-
-        // Consulting Inquiry Form Logic
-        const consultingForm = document.getElementById('consultingForm');
-
-        consultingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = e.target.consultingName.value;
-            const email = e.target.consultingEmail.value;
-            const message = e.target.consultingMessage.value;
-            console.log('Consulting Inquiry:', { name, email, message });
-            alert('Sua mensagem foi enviada! Entraremos em contato em breve.');
-            e.target.reset(); // Clear the form
-        });
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
+
 </body>
 </html>
