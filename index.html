@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gama In. por Mateus Barros - Transforme Seu Negócio com IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -41,7 +41,7 @@
             width: 100%; 
             max-width: 1200px;
             height: 500px; 
-            background-image: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            background-image: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.2) 0%, transparent 70%); /* Tonalidade mais rosada/alerta */
             z-index: 0; 
             pointer-events: none;
         }
@@ -59,7 +59,7 @@
             width: 100%;
             max-width: 1000px;
             height: 400px;
-            background-image: radial-gradient(ellipse at center, rgba(76, 29, 149, 0.18) 0%, transparent 70%);
+            background-image: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.18) 0%, transparent 70%); /* Tonalidade mais rosada/alerta */
             z-index: 0;
             pointer-events: none;
         }
@@ -71,25 +71,44 @@
             background-color: #0A0A0A;
         }
 
-        .btn-primary-refined {
+        .btn-primary-strong {
+            background-image: linear-gradient(to right, #EF4444, #D946EF, #8B5CF6 ); /* Vermelho -> Fúcsia -> Roxo */
+            color: white;
+            border-radius: 8px;
+            padding: 16px 36px;
+            font-weight: 800; /* Extra-Bold */
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3), 0 2px 5px rgba(217, 70, 239, 0.2), 0 0 0 1px rgba(255,255,255,0.05) inset;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary-strong:hover {
+            background-image: linear-gradient(to right, #F87171, #EC4899, #A78BFA); /* Mais claro no hover */
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4), 0 3px 7px rgba(217, 70, 239, 0.3), 0 0 0 1px rgba(255,255,255,0.07) inset;
+            transform: translateY(-3px) scale(1.03);
+        }
+        .btn-primary-strong:active {
+            transform: translateY(-1px) scale(1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25), inset 0 1px 2px rgba(0,0,0,0.15);
+        }
+        
+        .btn-level-action { /* Botão para os níveis */
             background-image: linear-gradient(to right, #6D28D9, #4F46E5);
             color: white;
             border-radius: 8px;
-            padding: 14px 32px;
+            padding: 12px 28px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255,255,255,0.05) inset;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-primary-refined:hover {
+        .btn-level-action:hover {
             background-image: linear-gradient(to right, #7C3AED, #6366F1);
             box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.15), 0 2px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255,255,255,0.07) inset;
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-2px);
         }
-        .btn-primary-refined:active {
-            transform: translateY(0px) scale(1);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
-        }
+
 
         .btn-secondary-refined {
             background-color: rgba(255, 255, 255, 0.08);
@@ -128,6 +147,13 @@
             position: relative; 
             overflow: hidden; 
         }
+        .card-level { /* Card específico para os níveis */
+            background-color: #1F2937; /* Tailwind gray-800 */
+            border: 1px solid #374151; /* Tailwind gray-700 */
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
         .card-refined-bg::before { 
             content: '';
             position: absolute;
@@ -144,12 +170,19 @@
             opacity: 1;
         }
 
-        .text-hero-gradient {
-            background-image: linear-gradient(to right, #A78BFA, #EC4899, #FBCFE8);
+        .text-hero-alert-gradient {
+            background-image: linear-gradient(to right, #F87171, #EF4444, #DC2626); /* Tons de vermelho alerta */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        .text-purple-gradient {
+            background-image: linear-gradient(to right, #A78BFA, #C4B5FD);
+             -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
 
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 7px; height: 7px;}
@@ -188,11 +221,37 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-         /* Adicionado para garantir que a imagem do guia mantenha a proporção e não estique demais */
         .guide-image-container img {
-            max-height: 350px; /* Altura máxima da imagem do guia */
-            width: auto; /* Largura automática para manter proporção */
-            object-fit: contain; /* Garante que a imagem caiba sem cortar, mas pode deixar espaços */
+            max-height: 350px; 
+            width: auto; 
+            object-fit: contain; 
+        }
+        
+        .checklist li, .advantages-list li {
+            padding-left: 2.5rem; 
+            position: relative;
+            margin-bottom: 0.85rem; 
+            line-height: 1.6;
+        }
+        .checklist li::before {
+            content: '✅'; 
+            position: absolute;
+            left: 0;
+            top: 0.05em; 
+            font-size: 1.3em; 
+        }
+        .errorlist li {
+            padding-left: 2.5rem; 
+            position: relative;
+            margin-bottom: 0.85rem; 
+            line-height: 1.6;
+        }
+        .errorlist li::before {
+            content: '❌'; 
+            position: absolute;
+            left: 0;
+            top: 0.05em;
+            font-size: 1.3em;
         }
     </style>
 </head>
@@ -206,9 +265,9 @@
             </a>
             
             <nav class="hidden md:flex space-x-3 sm:space-x-4 md:space-x-5 items-center">
-                <a href="#consultoria" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors font-medium">Consultoria de IA</a>
+                <a href="#niveis-consultoria" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors font-medium">Níveis de Consultoria</a>
                 <a href="#sobre" class="text-gray-300 hover:text-purple-300 px-2 py-1 md:px-3 rounded-md text-sm sm:text-base transition-colors">Sobre Mim</a>
-                <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" class="btn-header-subtle text-sm sm:text-base px-2 py-1 md:px-3">Guia Gratuito</a>
+                <a href="#guia-gratuito" class="btn-header-subtle text-sm sm:text-base px-2 py-1 md:px-3">Guia Gratuito</a>
             </nav>
 
             <div class="md:hidden">
@@ -219,55 +278,55 @@
         </div>
 
         <div id="mobile-menu" class="md:hidden hidden bg-black/90 backdrop-blur-md border-t border-gray-700/50">
-            <a href="#consultoria" class="block text-gray-200 hover:bg-gray-700/50 px-4 py-3 text-base font-medium">Consultoria de IA</a>
+            <a href="#niveis-consultoria" class="block text-gray-200 hover:bg-gray-700/50 px-4 py-3 text-base font-medium">Níveis de Consultoria</a>
             <a href="#sobre" class="block text-gray-200 hover:bg-gray-700/50 px-4 py-3 text-base">Sobre Mim</a>
-            <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank" class="block text-purple-400 hover:bg-gray-700/50 px-4 py-3 text-base">Guia Gratuito</a>
+            <a href="#guia-gratuito" class="block text-purple-400 hover:bg-gray-700/50 px-4 py-3 text-base">Guia Gratuito</a>
         </div>
     </header>
 
-    <section class="hero-section-bg text-white py-28 md:py-48 overflow-hidden"> 
+    <section class="hero-section-bg text-white py-28 md:py-40 overflow-hidden"> 
         <div class="container mx-auto px-6 text-center section-content">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-hero-gradient leading-tight reveal-on-scroll">
-                A Inteligência Artificial Já Chegou.
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 text-hero-alert-gradient leading-tight reveal-on-scroll">
+                🔥 Sua Empresa Perdeu R$ 47.000 Este Mês
             </h1>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-10 text-gray-100 leading-tight reveal-on-scroll" style="transition-delay: 0.2s;">
-                Sua Empresa Está Pronta Para Liderar a Transformação?
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 text-gray-100 leading-tight reveal-on-scroll" style="transition-delay: 0.2s;">
+                E Você Nem Percebeu. Enquanto Seus Concorrentes Automatizam Tudo.
             </h2>
-            <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed reveal-on-scroll" style="transition-delay: 0.4s;">
-                Descubra como a IA pode ser mais do que uma tendência: uma alavanca real para inovação, produtividade e resultados exponenciais no seu negócio. O futuro não está batendo à porta, ele já entrou.
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
+                <em>Tempo perdido em tarefas operacionais. Vendas que escaparam por falta de agilidade. Custos que poderiam ser cortados pela metade.</em>
+            </p>
+            <p class="text-xl md:text-2xl font-semibold text-white mb-10 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.5s;">
+                A IA não é mais vantagem competitiva. <span class="text-purple-400">É questão de sobrevivência.</span>
             </p>
             <div class="reveal-on-scroll" style="transition-delay: 0.6s;">
-                <a href="#consultoria" 
-                   class="btn-primary-refined inline-block">
-                    QUERO TRANSFORMAR MEU NEGÓCIO COM IA
+                <a href="#niveis-consultoria" 
+                   class="btn-primary-strong inline-block">
+                    👉 QUERO PARAR DE PERDER DINHEIRO
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="desafios" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
+    <section id="situacoes" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
         <div class="container mx-auto px-6 section-content">
             <div class="text-center mb-16 md:mb-20 reveal-on-scroll">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white">A IA Promete Muito,</h2>
-                <p class="text-xl md:text-2xl text-purple-400 mt-2">mas a prática parece um labirinto?</p>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white">Se Você É Empresário, Reconhece Essas 3 Situações:</h2>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
                 <div class="card-refined-bg p-8 reveal-on-scroll">
-                    <svg class="w-10 h-10 text-purple-500 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0zM18.364 5.636L15.536 8.464m0 7.072l2.828 2.828m-12.728 0l2.828-2.828m0-7.072L5.636 5.636"></path></svg>
-                    <h3 class="text-2xl font-semibold mb-3 text-white">Potencial x Prática</h3>
-                    <p class="text-gray-300 leading-relaxed">Você vê o potencial imenso da IA, mas traduzi-lo em ações concretas e lucrativas para *seu* negócio parece um desafio complexo?</p>
+                    <p class="text-5xl mb-4">❌</p>
+                    <p class="text-gray-200 text-lg leading-relaxed">Sua equipe gasta <strong class="text-white">4+ horas por dia</strong> em tarefas que poderiam ser automatizadas <span class="text-gray-400">(enquanto seus concorrentes fazem o mesmo trabalho em 30 minutos)</span></p>
                 </div>
                 <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.15s;">
-                    <svg class="w-10 h-10 text-purple-500 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657zM9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
-                    <h3 class="text-2xl font-semibold mb-3 text-white">Uso Superficial</h3>
-                    <p class="text-gray-300 leading-relaxed">Sente que está apenas arranhando a superfície, usando ferramentas de forma isolada, sem uma estratégia que realmente impulsione seus resultados?</p>
+                    <p class="text-5xl mb-4">❌</p>
+                    <p class="text-gray-200 text-lg leading-relaxed">Você perde vendas porque <strong class="text-white">demora para responder leads</strong> <span class="text-gray-400">(enquanto a automação de atendimento dos seus concorrentes converte em segundos)</span></p>
                 </div>
                 <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.3s;">
-                     <svg class="w-10 h-10 text-purple-500 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m0 0A2.373 2.373 0 0014.373 20H20V4H7.627A2.373 2.373 0 0012 6.253zM4 20V4h3.627m0 16H4m0-16L12 4m0 0v2.253"></path></svg>
-                    <h3 class="text-2xl font-semibold mb-3 text-white">Excesso de Informação</h3>
-                    <p class="text-gray-300 leading-relaxed">A enxurrada de 'novas ferramentas milagrosas' te deixa mais confuso do que confiante sobre qual caminho seguir para inovar de verdade?</p>
+                    <p class="text-5xl mb-4">❌</p>
+                    <p class="text-gray-200 text-lg leading-relaxed">Seus custos operacionais <strong class="text-white">consomem sua margem</strong> <span class="text-gray-400">(enquanto empresas similares cortaram 60% dos custos com IA)</span></p>
                 </div>
             </div>
+            <p class="text-center mt-12 text-xl md:text-2xl text-purple-300 font-semibold reveal-on-scroll" style="transition-delay: 0.4s;">Resultado? Você trabalha mais, ganha menos, e fica para trás.</p>
         </div>
     </section>
 
@@ -275,98 +334,247 @@
         <div class="container mx-auto px-6 section-content">
             <div class="md:flex md:items-center md:space-x-16">
                 <div class="md:w-2/5 mb-10 md:mb-0 text-center md:text-left reveal-on-scroll" style="transition-delay: 0.2s;">
-                    <img src="https://placehold.co/400x400/111111/A78BFA?text=Mateus+Barros" alt="Mateus Barros" class="rounded-lg shadow-2xl mx-auto md:mx-0 w-64 h-64 sm:w-72 sm:h-72 md:w-full md:h-auto max-w-md object-cover border-2 border-purple-600/30">
+                    <img src="https://i.pinimg.com/736x/2a/ac/ec/2aacec4c437cf183f613247fd3efc2ea.jpg" alt="Mateus Barros - Especialista em IA e Automação" class="rounded-lg shadow-2xl mx-auto md:mx-0 w-64 h-64 sm:w-72 sm:h-72 md:w-full md:h-auto max-w-md object-cover border-2 border-purple-600/30">
                 </div>
                 <div class="md:w-3/5 reveal-on-scroll" style="transition-delay: 0.4s;">
-                    <p class="text-base font-semibold text-purple-400 uppercase tracking-wider mb-3">Prazer, sou Mateus Barros</p>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white leading-tight">E ajudo você a transformar o potencial da IA em realidade lucrativa.</h2>
-                    <p class="text-gray-300 text-lg mb-5 leading-relaxed">
-                        Por anos, mergulhei de cabeça no universo da Inteligência Artificial, não apenas como um entusiasta, mas como um estrategista que implementa soluções do zero à automação completa (com ferramentas como n8n).
-                    </p>
-                    <p class="text-gray-300 text-lg leading-relaxed">
-                        Vi de perto o 'gap' entre o hype da IA e a aplicação prática que gera valor real. É exatamente aí que minha paixão e expertise se encontram: desmistificar a IA e torná-la uma aliada poderosa para empresários e profissionais como você, focando em aumento de produtividade, redução de custos e inovação genuína.
-                    </p>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white leading-tight">Eu Sou Mateus Barros</h2>
+                    <h3 class="text-xl md:text-2xl text-purple-400 font-semibold mb-6">E Transformo Empresas Comuns em Máquinas de Resultados com IA</h3>
+                    <p class="text-gray-300 text-lg mb-4 leading-relaxed">Nos últimos anos, mergulhei fundo no universo da Inteligência Artificial, não apenas estudando, mas implementando soluções personalizadas do zero, com tecnologia de ponta em todos os projetos.</p>
+                    <p class="text-gray-300 text-lg mb-4 leading-relaxed">Sei muito bem como é o abismo entre o hype da IA e a aplicação prática, por esse motivo eu entrego automações que aumentam produtividade, reduzem custos operacionais e desbloqueiam novas fontes de receita para empresas reais.</p>
+                    <p class="text-gray-300 text-lg mb-4 font-semibold">Entre os resultados que já orquestrei:</p>
+                    <ul class="checklist text-gray-300 text-lg leading-relaxed mb-5">
+                        <li>Automatização de atendimento no WhatsApp, gerando aumento expressivo nas conversões</li>
+                        <li>Redução de até 80% no tempo operacional em processos internos de empresas</li>
+                        <li>Criação de fluxos automatizados que geram centenas de milhares de reais por ano</li>
+                        <li>Desenvolvimento de agentes IA sob medida que permitem operar 24/7, sem depender de grande (ou nenhuma) equipe</li>
+                    </ul>
+                    <p class="text-gray-200 text-lg leading-relaxed">Eu não sou apenas mais um “consultor de IA”. <br class="hidden md:inline"><strong class="text-white">Sou o estrategista que entra no seu negócio, entende sua realidade e desenha soluções que realmente funcionam no dia a dia</strong>, alinhadas ao seu faturamento, metas e capacidade operacional.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="consultoria" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
-        <div class="container mx-auto px-6 text-center section-content">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white leading-tight reveal-on-scroll">Chega de Tentativa e Erro.</h2>
-            <p class="text-xl md:text-2xl text-purple-400 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Descubra a Consultoria de IA Desenhada Para o Seu Sucesso Estratégico.</p>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-16 leading-relaxed reveal-on-scroll" style="transition-delay: 0.4s;">
-                Você não precisa decifrar a Inteligência Artificial sozinho. Minha consultoria é um atalho estratégico, um acompanhamento personalizado para que você não apenas 'use' IA, mas a integre de forma inteligente aos seus processos, cultura e objetivos de negócio.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8 md:gap-10 text-left mb-16">
-                <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.5s;">
-                    <h3 class="text-2xl font-semibold text-purple-300 mb-3">Clareza Estratégica</h3>
-                    <p class="text-gray-300 leading-relaxed">Juntos, mapearemos os gargalos e oportunidades onde a IA pode gerar o maior impacto no *seu* negócio.</p>
-                </div>
-                <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.65s;">
-                    <h3 class="text-2xl font-semibold text-purple-300 mb-3">Capacitação Real</h3>
-                    <p class="text-gray-300 leading-relaxed">Treinamento para você e sua equipe dominarem as ferramentas certas, com autonomia e foco em resultados práticos.</p>
-                </div>
-                <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.8s;">
-                    <h3 class="text-2xl font-semibold text-purple-300 mb-3">Implementação com Propósito</h3>
-                    <p class="text-gray-300 leading-relaxed">Construímos soluções e fluxos de trabalho que otimizam seu tempo, reduzem custos e abrem portas para a inovação.</p>
-                </div>
+    <section id="niveis-consultoria" class="py-20 md:py-32 section-bg-dark-alt relative section-glow-purple overflow-hidden">
+        <div class="container mx-auto px-6 section-content">
+            <div class="text-center mb-12 md:mb-16 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white">3 Níveis de Transformação com IA</h2>
+                <h3 class="text-xl md:text-2xl text-purple-400 mt-2">Escolha Seu Nível de Ambição</h3>
             </div>
-            <div class="reveal-on-scroll" style="transition-delay: 1s;">
-                <a href="https://tally.so/r/wzvpy0" target="_blank"
-                   class="btn-primary-refined inline-block">
-                    AGENDE UMA CONVERSA ESTRATÉGICA
-                </a>
-                <p class="mt-5 text-sm text-gray-400">Sem compromisso. Vamos entender seus desafios e desenhar um plano de ação.</p>
+            <div class="grid lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="card-level p-8 flex flex-col reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-1">📚 NÍVEL 1: IA FOUNDATION</h4>
+                    <p class="text-gray-400 mb-4 text-sm font-medium">Para quem quer dominar IA com autonomia</p>
+                    <p class="text-4xl font-extrabold text-white mb-6">R$ 4.000 <span class="text-lg font-normal text-gray-400">à vista</span></p>
+                    <ul class="checklist text-gray-300 space-y-2 mb-8 flex-grow">
+                        <li>4 semanas de consultoria estratégica</li>
+                        <li>Treinamento completo da sua equipe</li>
+                        <li>Mapa de implementação personalizado</li>
+                        <li>30 dias de suporte direto</li>
+                        <li>Acesso ao material exclusivo</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 italic mb-6">Ideal para: Empresas que querem aprender e implementar internamente</p>
+                    <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action w-full text-center mt-auto">ESCOLHER NÍVEL 1</a>
+                </div>
+
+                <div class="card-level p-8 flex flex-col border-2 border-purple-500 shadow-purple-500/30 shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
+                    <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full">MAIS POPULAR</span>
+                    <h4 class="text-2xl font-bold text-purple-300 mb-1 mt-3">⚡ NÍVEL 2: IA AUTOMATION</h4>
+                    <p class="text-gray-400 mb-4 text-sm font-medium">Implementação hands-on + gestão contínua</p>
+                    <p class="text-3xl font-extrabold text-white mb-6">💬 Sob consulta <span class="block text-sm font-normal text-yellow-400">apenas 3 vagas disponíveis</span></p>
+                    <ul class="checklist text-gray-300 space-y-2 mb-8 flex-grow">
+                        <li><strong class="text-white">Tudo do Nível 1 +</strong></li>
+                        <li>Implementação completa das automações</li>
+                        <li>Sistemas de WhatsApp/Instagram automatizados</li>
+                        <li>Fluxos de trabalho otimizados</li>
+                        <li>Gestão e manutenção contínua</li>
+                        <li>Relatórios mensais de performance</li>
+                        <li>Atualizações e melhorias constantes</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 italic mb-6">Ideal para: Empresas que querem resultados sem headache</p>
+                    <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action w-full text-center mt-auto bg-purple-600 hover:bg-purple-700">CANDIDATAR-SE AO NÍVEL 2</a>
+                </div>
+
+                <div class="card-level p-8 flex flex-col reveal-on-scroll" style="transition-delay: 0.6s;">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-1">🏆 NÍVEL 3: IA PARTNERSHIP 360</h4>
+                    <p class="text-gray-400 mb-4 text-sm font-medium">Parceria estratégica completa</p>
+                    <p class="text-3xl font-extrabold text-white mb-6">💬 Sob consulta <span class="block text-sm font-normal text-yellow-400">apenas 2 vagas (aplicação rigorosa)</span></p>
+                    <ul class="checklist text-gray-300 space-y-2 mb-8 flex-grow">
+                        <li><strong class="text-white">Tudo dos Níveis anteriores +</strong></li>
+                        <li>Transformação 360° da empresa</li>
+                        <li>Desenvolvimento contínuo de soluções personalizadas</li>
+                        <li>Integração completa entre todos os sistemas</li>
+                        <li>Acesso prioritário às novas tecnologias de IA</li>
+                        <li>Consultoria estratégica mensal</li>
+                        <li>Suporte VIP com resposta em até 2 horas</li>
+                        <li>Participação em decisões estratégicas de tecnologia</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 italic mb-6">Para: Empresários visionários que querem liderar seu mercado</p>
+                    <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action w-full text-center mt-auto">CANDIDATAR-SE AO NÍVEL 3</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="guia-final" class="py-20 md:py-32 section-bg-dark reveal-on-scroll">
+    <section id="escassez" class="py-20 md:py-24 section-bg-dark">
+        <div class="container mx-auto px-6 section-content">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Por Que Apenas Essas Vagas?</h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="reveal-on-scroll mb-10" style="transition-delay: 0.2s;">
+                    <p class="text-xl text-center text-gray-300 mb-6">Eu não trabalho com volume. Trabalho com <strong class="text-purple-300">transformação real</strong>. Cada projeto recebe minha atenção direta e não é delegado para assistentes.</p>
+                    <p class="text-lg text-center text-gray-400">Por isso, <strong class="text-white">limito o número de vagas</strong>:</p>
+                    <ul class="text-center list-none my-4 space-y-1">
+                        <li>Apenas <strong class="text-yellow-400">2 vagas no Nível 3</strong> (transformação completa)</li>
+                        <li>Apenas <strong class="text-yellow-400">3 vagas no Nível 2</strong> (automação + gestão contínua)</li>
+                        <li>Nível 1: Abertura ampla, <strong class="text-yellow-400">mas com prazo limitado de aplicação</strong></li>
+                    </ul>
+                </div>
+                <div class="reveal-on-scroll mb-10" style="transition-delay: 0.3s;">
+                    <h3 class="text-2xl font-semibold text-white text-center mb-4">Por que essa limitação?</h3>
+                    <ul class="checklist text-gray-300 text-lg max-w-xl mx-auto">
+                        <li>Porque cada projeto é <strong class="text-white">100% personalizado</strong> para sua empresa.</li>
+                        <li>Porque eu entro no jogo junto com você, como <strong class="text-white">parceiro estratégico</strong>, não como fornecedor.</li>
+                        <li>Porque <strong class="text-white">resultados reais exigem foco</strong>, não atendimento em massa.</li>
+                    </ul>
+                </div>
+                <div class="reveal-on-scroll card-refined-bg p-6 md:p-8" style="transition-delay: 0.4s;">
+                    <h3 class="text-2xl font-semibold text-purple-300 text-center mb-4">Critérios para Níveis 2 e 3:</h3>
+                    <ul class="checklist text-gray-200 text-lg max-w-xl mx-auto">
+                        <li>Empresa com faturamento mínimo de <strong class="text-white">R$ 300 mil/mês</strong></li>
+                        <li>Disposição para implementar <strong class="text-white">mudanças estratégicas</strong></li>
+                        <li>Visão clara de <strong class="text-white">crescimento em médio e longo prazo</strong></li>
+                    </ul>
+                </div>
+                <div class="mt-10 text-center reveal-on-scroll" style="transition-delay: 0.5s;">
+                    <p class="text-lg text-red-400 font-semibold">Aviso importante:</p>
+                    <p class="text-gray-300"> Se você não está pronto para mudar e crescer, essas vagas não são para você.<br> Se está pronto, aplique logo, porque enquanto você pensa, outros estão agindo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="roi" class="py-20 md:py-24 section-bg-dark-alt relative section-glow-purple overflow-hidden">
+        <div class="container mx-auto px-6 section-content">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Faça as Contas:</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl font-bold text-purple-300 mb-4">⚡ Nível 2: IA AUTOMATION</h3>
+                    <p class="text-gray-400 mb-4">Pense nas pequenas melhorias que somam:</p>
+                    <ul class="checklist text-gray-300 space-y-2">
+                        <li>Uma equipe que antes respondia clientes manualmente agora usa automação e consegue <strong class="text-white">atender o dobro de leads por dia</strong>.</li>
+                        <li>Processos internos como emissão de relatórios, envio de e-mails e gestão de pedidos passam a rodar sozinhos, <strong class="text-white">liberando horas preciosas do seu time</strong>.</li>
+                        <li>O atendimento no WhatsApp e Instagram ganha velocidade e consistência, <strong class="text-white">aumentando as conversões e evitando perder vendas quentes</strong>.</li>
+                    </ul>
+                    <p class="mt-4 text-purple-200 font-semibold">Só nesses pontos, empresas já percebem retorno em poucos meses porque menos tempo gasto e mais vendas geradas = mais margem no fim do mês.</p>
+                </div>
+                <div class="card-refined-bg p-8 reveal-on-scroll" style="transition-delay: 0.4s;">
+                    <h3 class="text-2xl font-bold text-purple-300 mb-4">🏆 Nível 3: IA PARTNERSHIP 360</h3>
+                    <p class="text-gray-400 mb-4">Aqui não estamos falando só de automação, mas de transformação estratégica:</p>
+                    <ul class="checklist text-gray-300 space-y-2">
+                        <li>Sistemas que integram <strong class="text-white">vendas, marketing e atendimento</strong>, criando uma operação que funciona <strong class="text-white">24 horas por dia</strong>.</li>
+                        <li>Estratégias de inteligência artificial para <strong class="text-white">recomendar produtos, qualificar leads e melhorar decisões comerciais</strong>.</li>
+                        <li>Processos otimizados que permitem à empresa <strong class="text-white">crescer sem aumentar o tamanho da equipe</strong>.</li>
+                    </ul>
+                     <p class="mt-4 text-purple-200 font-semibold">O resultado? Empresas que implementam esse nível não apenas economizam, elas destravam crescimento real, ganhando vantagem competitiva de longo prazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflexao" class="py-20 md:py-24 section-bg-dark">
+        <div class="container mx-auto px-6 section-content text-center">
+            <div class="max-w-2xl mx-auto reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">💡 Pergunte a si mesmo:</h2>
+                <ul class="checklist text-gray-200 text-xl space-y-4 mb-10 text-left mx-auto max-w-lg">
+                    <li>Minha equipe está sobrecarregada com tarefas repetitivas?</li>
+                    <li>Estou perdendo vendas por demora no atendimento?</li>
+                    <li>Tenho processos manuais que poderiam ser automatizados?</li>
+                    <li>Quero que minha empresa cresça sem precisar dobrar o time?</li>
+                </ul>
+                <p class="text-xl text-gray-300 mb-4">Se você respondeu “sim” a pelo menos uma dessas perguntas,</p>
+                <p class="text-2xl font-semibold text-purple-300 mb-6">é hora de agir.</p>
+                <p class="text-lg text-gray-400 leading-relaxed">O verdadeiro custo não está no investimento.<br>Ele está no <strong class="text-white">tempo, dinheiro e oportunidades que você perde todo mês</strong> ao operar sem inteligência estratégica.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="guia-gratuito" class="py-20 md:py-32 section-bg-dark-alt reveal-on-scroll">
         <div class="container mx-auto px-6 text-center section-content">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight reveal-on-scroll">Quer Dar o Primeiro Passo (ou Aprofundar seu Conhecimento)?</h2>
-            <p class="text-xl md:text-2xl text-purple-400 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Enquanto você considera a consultoria, preparei um presente para sua jornada.</p>
-            <div class="md:flex md:items-center md:space-x-12 bg-slate-900/50 p-8 md:p-12 rounded-2xl border border-gray-700/60 max-w-4xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
-                <div class="md:w-2/5 mb-8 md:mb-0 guide-image-container flex justify-center items-center"> <img src="https://i.pinimg.com/736x/e9/30/2a/e9302ab14a40ef3bd71508ab4a39bf5a.jpg" alt="Guia Prático de IA - Capa com elementos futuristas e cérebro digital" class="rounded-lg shadow-xl mx-auto">
+            <p class="text-purple-400 font-semibold mb-3 reveal-on-scroll">Enquanto Você Decide...</p>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight reveal-on-scroll" style="transition-delay: 0.1s;">Pegue Este Guia Exclusivo</h2>
+            <h3 class="text-2xl md:text-3xl text-purple-300 mb-10 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">“IA Estratégica: O Manual do Empresário Inteligente”</h3>
+            
+            <div class="md:flex md:items-center md:space-x-12 bg-slate-900/50 p-8 md:p-12 rounded-2xl border border-gray-700/60 max-w-4xl mx-auto reveal-on-scroll" style="transition-delay: 0.3s;">
+                <div class="md:w-2/5 mb-8 md:mb-0 guide-image-container flex justify-center items-center"> 
+                    <img src="https://i.pinimg.com/736x/e9/30/2a/e9302ab14a40ef3bd71508ab4a39bf5a.jpg" alt="Guia Prático de IA - Capa com elementos futuristas e cérebro digital" class="rounded-lg shadow-xl mx-auto">
                 </div>
                 <div class="md:w-3/5 text-left">
-                    <h3 class="text-2xl md:text-3xl font-semibold text-white mb-5">Acesse o Guia Prático de Inteligência Artificial</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Um material cuidadosamente elaborado, direto ao ponto, para você entender as ferramentas essenciais e as melhores práticas para começar a aplicar IA com mais confiança.
-                    </p>
-                    <ul class="space-y-3 text-gray-300 mb-8">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Mapa claro das principais ferramentas.</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Dicas práticas para produtividade.</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Linguagem descomplicada.</li>
+                    <p class="text-gray-300 mb-4 leading-relaxed">Neste guia prático, você vai descobrir:</p>
+                    <ul class="checklist text-gray-300 text-lg space-y-3 mb-8">
+                        <li>As <strong class="text-white">7 ferramentas de IA</strong> que toda empresa deveria testar agora</li>
+                        <li>Como <strong class="text-white">identificar os processos certos para automatizar primeiro</strong></li>
+                        <li>Exemplos reais de empresas que aumentaram lucro com IA</li>
+                        <li>Um <strong class="text-white">roteiro passo a passo</strong> para começar do jeito certo sem precisar virar técnico ou programador</li>
                     </ul>
                     <a href="https://iamateusbarros.notion.site/HOME-1f6eab9d09e18062bca1e213ba84bd1e?pvs=4" target="_blank"
-                       class="btn-secondary-refined inline-block">
+                       class="btn-secondary-refined inline-block w-full sm:w-auto text-center">
                         ACESSAR O GUIA GRATUITO
                     </a>
                 </div>
+            </div>
+            <div class="mt-12 max-w-2xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
+                <h4 class="text-xl font-semibold text-white mb-3">Por que estou te dando isso?</h4>
+                <p class="text-gray-400 leading-relaxed">Porque mesmo que você não entre agora para os níveis premium, eu acredito que <strong class="text-gray-200">todo empresário inteligente deve pelo menos entender o potencial da IA</strong>. Este guia vai abrir seus olhos para oportunidades que você talvez nem imagine — e pode ser o primeiro passo para transformar seu negócio.</p>
+                <p class="text-gray-300 mt-3">Se você quiser ajuda para implementar depois, <strong class="text-purple-300">já sabe onde me encontrar.</strong></p>
             </div>
         </div>
     </section>
 
     <section class="cta-final-bg text-white py-28 md:py-40 overflow-hidden">
         <div class="container mx-auto px-6 text-center section-content">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-hero-gradient leading-tight reveal-on-scroll">Pronto Para Dar o Salto Quântico com IA?</h2>
-            <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed reveal-on-scroll" style="transition-delay: 0.2s;">
-                A transformação do seu negócio começa com uma conversa. Vamos explorar juntos como a Inteligência Artificial pode ser sua maior aliada estratégica.
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-hero-alert-gradient leading-tight reveal-on-scroll">🔥 Sua Decisão Define Seu 2026</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10 text-left">
+                <div class="reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-3">Cenário 1: O Custo da Inércia</h3>
+                    <p class="text-gray-300 leading-relaxed">Você continua fazendo as coisas do jeito antigo. Sua equipe continua perdendo tempo. Seus concorrentes avançam. <strong class="text-white">Você fica para trás.</strong></p>
+                </div>
+                <div class="reveal-on-scroll" style="transition-delay: 0.3s;">
+                     <h3 class="text-2xl font-semibold text-green-400 mb-3">Cenário 2: A Vantagem da Ação</h3>
+                    <p class="text-gray-300 leading-relaxed">Você implementa IA estratégica agora. Automatiza processos. Reduz custos. Aumenta vendas. <strong class="text-white">Lidera seu mercado.</strong></p>
+                </div>
+            </div>
+            <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto reveal-on-scroll" style="transition-delay: 0.4s;">
+                A escolha é sua. Mas ela precisa ser feita <strong class="text-purple-300">AGORA</strong>.<br>Porque enquanto você pensa, seus concorrentes estão agindo.
             </p>
-            <div class="reveal-on-scroll" style="transition-delay: 0.4s;">
-                <a href="https://tally.so/r/wzvpy0" target="_blank"
-                   class="btn-primary-refined inline-block">
-                    SIM, QUERO AGENDAR MINHA CONVERSA!
-                </a>
+
+            <div class="reveal-on-scroll space-y-8" style="transition-delay: 0.5s;">
+                <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">Escolha Seu Nível de Transformação:</h3>
+                <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action block p-6 text-center">
+                        <span class="text-xl block mb-1">🎯 NÍVEL 1</span>
+                        <span class="text-sm">IA FOUNDATION</span>
+                    </a>
+                     <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action block p-6 text-center bg-purple-600 hover:bg-purple-700 ring-2 ring-purple-400">
+                        <span class="text-xl block mb-1">⚡ NÍVEL 2</span>
+                        <span class="text-sm">IA AUTOMATION</span>
+                    </a>
+                     <a href="https://tally.so/r/wzvpy0" target="_blank" class="btn-level-action block p-6 text-center">
+                        <span class="text-xl block mb-1">🏆 NÍVEL 3</span>
+                        <span class="text-sm">IA PARTNERSHIP 360</span>
+                    </a>
+                </div>
+                 <p class="text-sm text-gray-400">*Vagas limitadas. Seleção por ordem de qualificação.*</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-black text-gray-400 py-12 text-center border-t border-gray-800/70">
         <div class="container mx-auto px-6">
-            <p>&copy; <span id="currentYear"></span> Gama In. por Mateus Barros. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2">Potencializando negócios com Inteligência Artificial Estratégica.</p>
+            <p class="text-lg">&copy; 2025 Gama In. por Mateus Barros. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2 italic">Transformando empresários em líderes de mercado através da IA Estratégica.</p>
         </div>
     </footer>
 
@@ -399,13 +607,13 @@
                     entry.target.classList.add('revealed');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 }); 
 
         revealOnScrollElements.forEach(el => {
             revealObserver.observe(el);
         });
 
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // document.getElementById('currentYear').textContent = new Date().getFullYear(); // Mantém ano atual dinâmico
     </script>
 
 </body>
